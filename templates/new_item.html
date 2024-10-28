@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Cadastrar novo item</h2>
+
+{% if page.created %}
+
+<p> Item cadastrado com sucesso !</p>
+
+{% endif %}
+
+<p> Preencha todos os campos para cadastrar no item.</p>
+
+<form action="/new" method="POST">
+
+    <div>
+        <label for="image">Imagem do item <i class="fa-regular fa-circle-question fa-fw"
+                title="Foto do item que será cadastrado."></i> :</label>
+        <input type="text" name="image" id="image" required>
+    </div>
+    <div>
+        <label for="name">Nome do item <i class="fa-regular fa-circle-question fa-fw"
+                title="Digite um nome para o item."></i> :</label>
+        <input type="text" name="name" id="name" required minlength="3">
+    </div>
+    <div>
+        <label for="description">Descrição do item <i class="fa-regular fa-circle-question fa-fw"
+                title="Digite a descrição do item."></i></label>
+        <textarea name="description" required minlength="5"></textarea>
+    </div>
+    <div>
+        <label for="location">Localização do item <i class="fa-regular fa-circle-question fa-fw"
+                title="Digite a location do item."></i> :</label>
+        <input type="text" name="location" id="location" required minlength="3">
+    </div>  
+    <div>
+        <button type="submit">Cadastrar</button>
+    </div>
+
+</form>
+
+<script>
+    // Evita o reenvio dos formulários ao atualizar a página
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+</script>
+
+{% endblock %}
+

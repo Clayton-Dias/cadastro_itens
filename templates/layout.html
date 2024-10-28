@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/layout.css">
+
+    {% if page.css %}
+    <link rel="stylesheet" href="/static/css/{{page.css}}"> <!-- CSS específico da página, caso fornecido -->
+    {% endif %}
+    <title>{{page.title}}</title>
+</head>
+<body>
+    <div id="wrap">
+        <header> 
+            <h1>Bem vindo</h1>
+        </header>
+        <nav>
+            <a href="/"><i class="fa-solid fa-house"></i>Início</a>
+            <a href="/newOwner"><i class="fa-solid fa-person"></i> Cadastrar Proprietário</a>
+            <a href="/newItem"><i class="fa-solid fa-boxes-packing"></i> Cadastrar Item</a>
+            <a href="/owners"><i class="fa-solid fa-users"></i> Listar Proprietários</a>
+        </nav>
+        
+        <main>           
+
+            {% block content %}{% endblock %}
+        </main>
+
+        <hr>
+        
+        <footer>&copy; 2024  Xyz</footer>
+
+    </div>
+    </div>
+</body>
+</html>

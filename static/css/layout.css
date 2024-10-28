@@ -1,0 +1,74 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center; /* Centraliza o título */
+}
+
+/* Container principal */
+#wrap {
+    max-width: 800px; /* Define uma largura máxima para o conteúdo */
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navegação */
+nav {
+    display: flex;
+    justify-content: space-around; /* Distribui links de forma equidistante */
+    margin: 20px 0;
+    background-color: #007bff; /* Cor de fundo da barra de navegação */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+nav a {
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s; /* Efeito de transição para hover */
+}
+
+nav a:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+/* Estilo do conteúdo principal */
+main {
+    padding: 10px;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666; /* Cor mais clara para o rodapé */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #wrap {
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column; /* Muda a direção para coluna em telas menores */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    nav a {
+        margin: 5px 0; /* Espaçamento entre links */
+    }
+}
