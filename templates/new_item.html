@@ -4,15 +4,22 @@
 
 <h2>Cadastrar novo item</h2>
 
-{% if page.created %}
+{% if success %}
 
-<p> Item cadastrado com sucesso !</p>
+<dialog id="myDialog">
+    <h4>Legal!</h4>
+    <p>Seu novo treco foi cadastrado!</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
 
 {% endif %}
 
 <p> Preencha todos os campos para cadastrar no item.</p>
 
-<form action="/new" method="POST">
+<form action="/new" method="POST" id="newThing">
 
     <div>
         <label for="image">Imagem do item <i class="fa-regular fa-circle-question fa-fw"
@@ -20,7 +27,7 @@
         <input type="text" name="image" id="image" required>
     </div>
     <div>
-        <label for="name">Nome do item <i class="fa-regular fa-circle-question fa-fw"
+        <label for="name">URL da foto: <i class="fa-regular fa-circle-question fa-fw"
                 title="Digite um nome para o item."></i> :</label>
         <input type="text" name="name" id="name" required minlength="3">
     </div>

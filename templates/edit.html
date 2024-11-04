@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Novo Treco</h2>
+<p>Preencha os campos abaixo para cadastrar um novo treco.</p>
+
+{% if success %}
+
+<dialog id="myDialog">
+    <h4>Legal!</h4>
+    <p>Seu novo treco foi cadastrado!</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+<form action="/edit/{{ thing.it_id }}" method="post" id="newThing">
+
+    <p>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" required minlength="3" maxlength="127" value="{{ thing.it_name }}">
+    </p>
+
+    <p>
+        <label for="photo">URL da foto:</label>
+        <img src="{{ thing.it_image }}" alt="{{ thing.it_name }}">
+        <input type="url" name="photo" id="photo" required value="{{ thing.it_image }}">
+    </p>
+
+    <p>
+        <label for="description">Descrição:</label>
+        <textarea name="description" id="description" required minlength="3">{{ thing.it_description }}</textarea>
+    </p>
+
+    <p>
+        <label for="location">Localização:</label>
+        <input type="text" name="location" id="location" required minlength="2" value="{{ thing.it_location }}">
+    </p>
+
+    <p>
+        <button type="submit">Atualizar</button>
+    </p>
+
+</form>
+
+{% endblock %}

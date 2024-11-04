@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Cadastre-se</h2>
+<p>Cadastre-se no <strong>Cadastro de Itens</strong> para gerenciar suas próprias coleções.</p>
+
+<form action="/newuser" method="post" id="newuser">
+
+    <p>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" required minlength="3" value="">
+    </p>
+
+    <p>
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" required>
+    </p>
+
+    <p>
+        <label for="birth">Nascimento:</label>
+        <input type="date" name="birth" id="birth" required>
+    </p>
+
+    <p>
+        <label for="password">Senha:</label>
+        <span>
+            <input type="password" name="password" id="password" required minlength="5" maxlength="25">
+            <button type="button" id="togglePass">&#128065;</button>
+        </span>
+    </p>
+
+    <p>
+        <button type="submit">Cadastrar</button>
+    </p>
+
+</form>
+
+<p class="center"><a href="/login">Já possui cadastro? Faça login!</a></p>
+
+
+{% if feedback == 'error' %}
+
+<dialog id="myDialog">
+    <h4>Oooops!</h4>
+    <p>Este e-mail já existe! </p>
+    <p>Tente fazer login ou usar outro e-mail para se cadastrar.</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+{% if feedback == 'success' %}
+
+<dialog id="myDialog">
+    <h4>Parabens!</h4>
+    <p>Cadastro efetuado! Faça login para iniciar sua coleção.</p>
+    <form method="dialog">
+        <button type="button" onclick="location.href='/login'">OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+
+<script>
+    // Obtém os elementos do HTML pelo ID
+    fieldPassword = document.getElementById('password')
+    btnTogglePass = document.getElementById('togglePass')
+    // Monitora 'click' no botão
+    btnTogglePass.addEventListener('click', (e) => {
+        // Se o campo é password
+        if (fieldPassword.type == 'password')
+            // Torna o campo 'text'
+            fieldPassword.type = 'text'
+        // Caso contrário
+        else
+            // Torna o campo 'password'
+            fieldPassword.type = 'password'
+        // Não faz mais nada
+        return false
+    })
+</script>
+
+{% endblock %}

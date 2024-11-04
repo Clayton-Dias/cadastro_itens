@@ -2,12 +2,51 @@
 
 {% block content %}
 
-<ul>
-    {% for thing in page.itens %}
-    <li>
-    {{ thing.it_name }}
-    </li>
+<h2>Sua lista de itens</h2>
+
+{% if delete %}
+
+<dialog id="myDialog">
+    <h4>Legal!</h4>
+    <p>Seu treco foi apagado!</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+{% if edit %}
+
+<dialog id="myDialog">
+    <h4>Legal!</h4>
+    <p>Seu treco foi editado!</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+<div class="list">
+
+    {% for thing in things %}
+
+    <div class="item">
+        <img src="{{ thing.it_image }}" alt="{{ thing.it_name }}">
+        <div>
+            <h4>{{ thing.it_name }}</h4>
+            <button onclick="location.href='/view/{{ thing.it_id }}'">Ver</button>
+            <button onclick="location.href='/edit/{{ thing.it_id }}'">Editar</button>
+            <button
+                onclick="if(confirm('Tem certeza?')) location.href='/delete/{{ thing.it_id }}'; return false">Apagar</button>
+        </div>
+    </div>
+
     {% endfor %}
-</ul>
+
+</div>
 
 {% endblock %}

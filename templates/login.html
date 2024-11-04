@@ -5,7 +5,20 @@
 <h2>Login</h2>
 <p>Você precisa estar logado para operar sua coleção</p>
 
-<form action="/login" method="post">
+{% if error %}
+
+<dialog id="myDialog">
+    <h4>Oooops!</h4>
+    <p>Usuário e/ou senha inválido.</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+<form action="/login" method="post" id="login">
 
     <p>
         <label for="email">E-mail:</label>
@@ -21,5 +34,8 @@
 
 
 </form>
+
+<p class="center"><a href="/newuser">Cadastre-se aqui!</a></p>
+<p class="center"><a href="/sendpass">Esqueceu a senha?</a></p>
 
 {% endblock %}

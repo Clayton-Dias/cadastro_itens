@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h3>{{ thing.it_name }}</h3>
+<img src="{{ thing.it_image }}" alt="{{ thing.it_name }}">
+<div>{{ thing.t_description }}</div>
+<ul>
+    <li>Cadastrada em {{ thing.it_date }}</li>
+    <li>Guardado em {{ thing.it_location }}</li>
+</ul>
+<p>
+    <button onclick="location.href='/edit/{{ thing.it_id }}'">Editar</button>
+    <button onclick="if(confirm('Tem certeza?')) location.href='/delete/{{ thing.it_id }}'; return false">Apagar</button>
+</p>
+
+{% endblock %}

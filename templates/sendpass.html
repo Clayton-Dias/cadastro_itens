@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Esqueceu a senha? Então chora.</h2>
+
+<p>Preencha seu email cadastrado no campo abaixo.</p>
+<p>Enviaremos uma nova senha e instruções.</p>
+
+<form method="post" action="/sendpass" id="sendpass">
+    <input type="email" name="email" id="email" required>
+    <button type="submit">Enviar</button>
+</form>
+
+<p class="center"><a href="/login">Fazer login</a></p>
+<p class="center"><a href="/newuser">Cadastre-se</a></p>
+
+{% if feedback == 'error' %}
+
+<dialog id="myDialog">
+    <h4>Atenção !!!</h4>
+    <p>Este e-mail não existe! Use o e-mail cadastrado ou cadastre-se.</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+{% if feedback == 'success' %}
+
+<dialog id="myDialog">
+    <h4>Atenção!</h4>
+    <p>Uma senha temporária foi enviado para seu email.</p>
+    <form method="dialog">
+        <button type="button" onclick="location.href='/login'">OK</button>
+    </form>
+</dialog>
+<script>myDialog.showModal()</script>
+
+{% endif %}
+
+
+{% endblock %}
